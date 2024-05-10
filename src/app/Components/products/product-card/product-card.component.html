@@ -1,0 +1,32 @@
+@for (product of products; track i; let i= $index ) {
+  <div class="col-md-6 col-lg-4 mb-5 ">
+    <div class="w-100 bg-white">
+      <div class="hotel-product text-center w-100">
+        <a href="#" class="d-block mb-0 thumbnail">
+          <img src="../../../../assets/images/choice1.png" alt="Image" class="img-fluid h-25">
+        </a>
+        <div class="hotel-product-body py-4">
+          <h5 class="heading mb-0 "><a class="text-decoration-none text-black fw-medium" href="#">{{product.name}}</a></h5>
+          <strong class="price text-secondary fw-medium">${{product.price}} / per night</strong>
+
+          @switch (product.quantity) {
+            @case (0) {
+              <p class="text-danger mt-4">No products Available</p>
+             <button class="btn btn-danger d-block m-auto mt-2 disabled" >Reserved</button>
+            }
+            @case (1) {
+              <p class="text-warning mt-4">Only One product Available</p>
+             <button class="btn btn-warning d-block m-auto mt-2 " >Reserve</button>
+            }
+            @default {
+             <button class="btn btn-success d-block m-auto mt-5 mb-3 " >Reserve</button>
+            }
+          }
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+}

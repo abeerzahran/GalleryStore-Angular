@@ -1,0 +1,62 @@
+<div class="row mt-5">
+  <h1 class="text-center mt-5 mb-5">{{productID==0 ?'ADD product':'EDIT product'}}</h1>
+  <div class="row m-auto">
+    <form [formGroup]="form" class="col-6 d-flex flex-column  m-auto">
+
+      <input class="form-control mb-2" name="name" formControlName="name"  type="text" placeholder="Enter the product name">
+
+      @if(getName.hasError('required')&& getName.touched){
+        <p  class="text-danger">the name is required</p>
+      }
+      @else if(getName.hasError('minlength')&& getName.touched){
+        <p  class="text-danger">the name must be > 3</p>
+      }
+      <input class="form-control mb-2" name="description" formControlName="description"  type="text" placeholder="Enter the product description">
+      @if(getdescription.hasError('required')&& getdescription.touched){
+        <p  class="text-danger">the description is required</p>
+      }
+      @else if(getdescription.hasError('minlength')&& getdescription.touched){
+        <p  class="text-danger">the name must be > 8</p>
+      }
+      <input   class="form-control mb-2" name="price" formControlName="price"  type="number" placeholder="Enter the product price">
+      @if(getprice.hasError('required')&& getName.touched){
+        <p  class="text-danger">the price is required</p>
+      }
+      @else if(getprice.hasError('min')&& getName.touched){
+        <p  class="text-danger">the price must be > 90</p>
+      }
+      <input  class="form-control mb-2" name="quantity" formControlName="quantity"type="number" placeholder="Enter the product quantity">
+      @if(getquantity.hasError('required')&& getquantity.touched){
+        <p  class="text-danger">the quantity is required</p>
+      }
+      @else if(getquantity.hasError('min')&& getquantity.touched){
+        <p  class="text-danger">the quantity must be > 0</p>
+      }
+      <input  class="form-control mb-2" name="rate" formControlName="rate"type="number" placeholder="Enter the product rate">
+      @if(getrate.hasError('required')&& getrate.touched){
+        <p  class="text-danger">the rate is required</p>
+      }
+      @else if(getrate.hasError('min')&& getrate.touched){
+        <p  class="text-danger">the quantity must be >= 0</p>
+      }
+      @else if(getrate.hasError('max')&& getrate.touched){
+        <p  class="text-danger">the quantity mustn't be > 5</p>
+      }
+      <input  class="form-control mb-2" name="categoryID" formControlName="categoryID"type="number" placeholder="Enter the product category">
+      @if(getcategory.hasError('required')&& getcategory.touched){
+        <p  class="text-danger">the rate is required</p>
+      }
+
+      <!-- <input #input4  class="form-control mb-4" type="text"   name="img" formControlName="img"   placeholder="Enter the product image name"> -->
+
+      <input #input4  class="form-control mb-4" type="file" accept="image/*" (change)="onFileSelected($event)"  name="img" formControlName="img"   placeholder="Enter the product image name">
+
+      @if(getimg.hasError('required')&& getimg.touched){
+        <p  class="text-danger">the image is required</p>
+      }
+
+      <button  class="btn btn-success w-50 m-auto" (click)="productHandler()">{{productID==0 ?'ADD product':'EDIT product'}}</button>
+    </form>
+    <!-- <img [src]="imageUrl" alt="" srcset=""> -->
+  </div>
+</div>
