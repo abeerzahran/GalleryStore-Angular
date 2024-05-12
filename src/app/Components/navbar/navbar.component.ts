@@ -11,6 +11,7 @@ import { EventEmitter } from 'stream';
 })
 export class NavbarComponent {
 
+  user:string =""
 
 
 }

@@ -21,7 +21,7 @@ export class AddProductComponent {
     price: new FormControl(90, [Validators.required, Validators.min(90)]),
     quantity: new FormControl(0, [Validators.required, Validators.min(0)]),
     rate: new FormControl(0, [Validators.required, Validators.min(0),Validators.max(5)]),
-    img: new FormControl(ArrayBuffer, [Validators.required]),
+    img: new FormControl(''),
     categoryID: new FormControl(0, [Validators.required, Validators.min(0)]),
   });
 
@@ -78,7 +78,7 @@ export class AddProductComponent {
           this.getprice.setValue(this.product.price);
           this.getquantity.setValue(this.product.quantity);
           this.getrate.setValue(this.product.rate);
-          // this.getimg.setValue(this.product.img);
+          this.getimg.setValue(this.product.img);
           this.getcategory.setValue(this.product.categoryID);
         }
       });
@@ -117,7 +117,7 @@ export class AddProductComponent {
       console.log(this.form.value);
       var product={
 
-          id:this.productID,
+          id:Number(this.productID),
           name: this.form.value.name ,
           description: this.form.value.description,
           price: this.form.value.price,
@@ -147,7 +147,7 @@ export class AddProductComponent {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.imageUrl = reader.result;
-        // this.form.value.img=String(this.imageUrl);
+        this.form.value.img=String(this.imageUrl);
         console.log(this.imageUrl);
       };
     }

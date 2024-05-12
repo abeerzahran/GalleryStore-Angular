@@ -2,12 +2,10 @@
 <!--  ------------------------------------------------------------------------>
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
   <div class="container">
-    <a class="navbar-brand fs-2" href="#">Suites</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand fs-2" href="#">Gallery</a>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto  mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto me-auto  mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" [routerLink]="['/']" [routerLinkActive]="'text-danger'" [routerLinkActiveOptions]="{exact:true}" aria-current="page"  >HOME</a>
         </li>
@@ -17,21 +15,8 @@
         <li class="nav-item">
           <a class="nav-link active" [routerLink]="['/products']" [routerLinkActive]="'text-danger'" [routerLinkActiveOptions]="{exact:true}"   aria-current="page">PRODUCTS</a>
         </li>
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
-            ROOMS
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Standard Room</a></li>
-            <li><a class="dropdown-item" href="#">Family Room</a></li>
-            <li><a class="dropdown-item" href="#">Single Room</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li> -->
-        <li class="nav-item">
-          <a class="nav-link" href="#">EVENTS</a>
-        </li>
+
+
         <li class="nav-item">
           <a class="nav-link" href="#">ABOUT</a>
         </li>
@@ -39,6 +24,24 @@
           <a class="nav-link" href="#">CONTACT</a>
         </li>
       </ul>
+
     </div>
+    <span>
+      <ul class="navbar-nav list-group-horizontal  mt-2">
+        <li class="nav-item me-3">
+          <a><i class="bi bi-cart3 fs-5  text-black "></i></a>
+        </li>
+        <li class="nav-item mt-1 me-3 ">
+          <a><i class="bi bi-heart fs-5   text-black "></i></a>
+        </li>
+        <li class="nav-item  me-3"[routerLink]="['/login']" [routerLinkActive]="'text-danger'" [routerLinkActiveOptions]="{exact:true}">
+          <a><i class="bi bi-person fs-4  "></i></a>
+          <span>{{user}}</span>
+        </li>
+      </ul>
+    </span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   </div>
 </nav>
