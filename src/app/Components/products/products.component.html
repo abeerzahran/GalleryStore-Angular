@@ -1,12 +1,32 @@
-<div class="container pt-5 ">
+
+<div class="container pt-5 mt-5 ">
   <div class="row">
     <div class="col-md-6 mx-auto text-center mb-5 section-heading">
-      <h2 class="mb-5">Our Products</h2>
+      <h2 class="mb-3">Our Products</h2>
     </div>
   </div>
 
-  <!-- <app-room-card [rooms]= "roomsList" class="row d-flex flex-row " ></app-room-card> -->
-  <app-product-card  class="row d-flex flex-row " ></app-product-card>
 
+  <div class="btn-group d-flex flex-row justify-content-around mb-5" role="group" aria-label="Basic radio toggle button group">
+    <input type="radio" class="btn-check" (input)="chooseCategory($event)" [value]="0" name="btnradio" [id]="'btnradio'+0" autocomplete="off" checked>
+    <label class="btn btn-outline-success mx-2" [for]="'btnradio'+0">All</label>
+    @for(category of categories; track $index) {
+    <input type="radio" class="btn-check" (input)="chooseCategory($event)" [value]="category.id" name="btnradio" [id]="'btnradio'+category.id" autocomplete="off" >
+    <label class="btn btn-outline-success mx-2" [for]="'btnradio'+category.id">{{category.name}}</label>
+
+    <!-- <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+    <label class="btn btn-outline-primary me-5" for="btnradio2">Radio 2</label>
+
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+    <label class="btn btn-outline-primary me-5" for="btnradio3">Radio 3</label> -->
+    }
+  </div>
+
+
+  <div class="row d-flex flex-row">
+    @for (product of products; track $index) {
+    <app-product-card  [product]="product" ></app-product-card>
+    }
+  </div>
 </div>
 

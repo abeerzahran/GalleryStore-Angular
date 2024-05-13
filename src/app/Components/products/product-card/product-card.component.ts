@@ -1,5 +1,6 @@
+import { CategoryService } from './../../../Services/category.service';
 import { ProductServicesService } from './../../../Services/product-services.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from '../../../Models/IProduct';
 import { CommonModule } from '@angular/common';
 
@@ -12,17 +13,11 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductCardComponent implements OnInit {
   products:IProduct[]=[]
- constructor(public ProductServ:ProductServicesService) {
+  @Input() product:any={}
+ constructor(public ProductServ:ProductServicesService,public categoryService: CategoryService) {
   }
   ngOnInit(): void {
-    this.ProductServ.getAllProducts().subscribe({
-      next:(data)=>{
-        this.products=data
-      },
-      error:(error)=>{
-        console.log(error);
-      }
 
-    })
+
   }
 }

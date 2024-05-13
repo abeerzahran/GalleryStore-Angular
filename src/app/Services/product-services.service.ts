@@ -39,4 +39,6 @@ export class ProductServicesService {
     // return this.Products;
     return this.httpClient.put(`${this.apiURL}/${id}`,Product);
    }
+
+
 }
