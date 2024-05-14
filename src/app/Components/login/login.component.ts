@@ -5,6 +5,7 @@ import { AccountService } from './../../Services/account.service';
 import { Component } from '@angular/core';
 import { EmailValidator, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router,ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -34,14 +35,14 @@ get getRememberMe(){
  }
 
 
-
+ token:string=""
  signin()
  {
   if(this.loginform.valid){
     this.accService.login(this.loginform.value).subscribe({
-      next(data) {
-
-        console.log(data);
+      next:(data)=> {
+        this.token=data.token;
+        localStorage.setItem("token",this.token);
       },
       error(err) {
         console.log(err);

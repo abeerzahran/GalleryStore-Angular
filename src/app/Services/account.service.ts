@@ -8,11 +8,11 @@ import { IRegister } from '../Models/IRegister';
 })
 export class AccountService {
 
-  apiUrl:string="https://localhost:7054/api";
+  apiUrl:string="http://localhost:5087/api";
   constructor(public httpClient:HttpClient) { }
 
   login(account:any){
-    return this.httpClient.post<ILogin>(`${this.apiUrl}/login`,account);
+    return this.httpClient.post<any>(`${this.apiUrl}/login`,account);
   }
 
   register(user:any){
