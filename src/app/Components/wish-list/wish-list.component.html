@@ -1,0 +1,45 @@
+<div class="row mt-5">
+  <h1 class="text-center mt-5">OUR DASHBOARD</h1>
+  <div class="row m-auto">
+
+    <div>
+      <!-- <button class="btn btn-success" [routerLink]="['/products',0,'edit']"  type="submit" >ADD Product</button> -->
+
+      <table class="table mb-5 mt-4 text-center">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th  scope="col">Quantity</th>
+            <th  scope="col">Rate</th>
+            <th  scope="col">Category</th>
+            <th  scope="col">Image</th>
+            <th  scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+@for(Product of products;track i;let i=$index){
+          <tr>
+            <th scope="row">{{Product.id}}</th>
+            <td>{{Product.name}}</td>
+            <td>{{Product.description}}</td>
+            <td>{{Product.price}}</td>
+            <td>{{Product.quantity}}</td>
+            <td>{{Product.rate}}</td>
+            <td>{{Product.categoryID}}</td>
+            <td><img class="" src="{{Product.img}}" alt=""></td>
+            <!-- <td>
+              <i class="bi bi-eye text-info p-2" [routerLink]="['/products',Product.id,'details']" ></i>
+              <i [routerLink]="['/products',Product.id,'edit']" class="bi bi-pencil-square text-warning p-2"></i>
+              <i class="bi bi-trash3 text-danger p-2" (click)="delete(Product.id)"></i>
+            </td> -->
+          </tr>
+        }
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
