@@ -7,6 +7,7 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { AddProductComponent } from './Components/dashboard/add-product/AddProductComponent';
 import { LoginComponent } from './Components/login/login.component';
 import { CartComponent } from './Components/cart/cart.component';
+import { WishListComponent } from './Components/wish-list/wish-list.component';
 
 export const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -16,6 +17,6 @@ export const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"cart",component:CartComponent},
   {path:"products/:id/edit",component:AddProductComponent},
-  {path:"registiration",component:RegistirationComponent}
-
+  {path:"registiration",component:RegistirationComponent},
+  {path:"Wish",component:WishListComponent}
 ];

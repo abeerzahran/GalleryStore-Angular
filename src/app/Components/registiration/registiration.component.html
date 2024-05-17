@@ -8,7 +8,9 @@
     </div>
     <div *ngIf="getEmail.touched">
       <small *ngIf="getEmail.hasError('required')"  class="form-text text-danger"><i class="bi bi-exclamation-circle-fill"></i> This Field Is Required</small>
-      <!-- <small *ngIf="getEmail.hasError('minlength')" class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> Length must be more than 8 charecters.</small> -->
+      <small *ngIf="getEmail.hasError('minlength')" class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> Length must be more than 7 charecters.</small>
+      <small *ngIf="getEmail.hasError('email')" class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> Invalid Email.</small>
+
     </div>
 
     <div class="flex-column">
@@ -19,7 +21,7 @@
     </div>
     <div *ngIf="getName.touched">
       <small *ngIf="getName.hasError('required')"  class="form-text text-danger"><i class="bi bi-exclamation-circle-fill"></i> This Field Is Required</small>
-      <small *ngIf="getName.hasError('minlength')" class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> Length must be than 8 charecters.</small>
+      <small *ngIf="getName.hasError('minlength')" class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> Length must be than 7 charecters.</small>
        </div>
     
     <div class="flex-column">
@@ -30,7 +32,7 @@
     </div>
     <div *ngIf="getPassword.touched">
       <small *ngIf="getPassword.hasError('required')"  class="form-text text-danger"> <i class="bi bi-exclamation-circle-fill"></i> This Field Is Required</small>
-      <small *ngIf="getPassword.hasError('minlength')" class="text-danger"> <i class="bi bi-exclamation-circle-fill"></i> Length must be than 8 charecters.</small>
+      <small *ngIf="getPassword.hasError('minlength')" class="text-danger"> <i class="bi bi-exclamation-circle-fill"></i> Length must be than 7 charecters.</small>
     </div>
 
     <div class="flex-column">
@@ -41,7 +43,7 @@
     </div>
     <div *ngIf="getConfirmPassword.touched">
       <small  *ngIf="getConfirmPassword.hasError('required')"  class="form-text text-danger d-block"><i class="bi bi-exclamation-circle-fill"></i> This Field Is Required</small>
-      <small  *ngIf="getConfirmPassword.hasError('minlength')" class="text-danger d-block"><i class="bi bi-exclamation-circle-fill"></i> Length must be than 8 charecters.</small>
+      <small  *ngIf="getConfirmPassword.hasError('minlength')" class="text-danger d-block"><i class="bi bi-exclamation-circle-fill"></i> Length must be than 7 charecters.</small>
       <small  *ngIf="getConfirmPassword.value!=getPassword.value" class="text-danger d-block"><i class="bi bi-exclamation-circle-fill"></i> Must be identical to the password.</small>
 
     
@@ -66,7 +68,7 @@
     </div>
     <div *ngIf="getAddress.touched">
       <small *ngIf="getAddress.hasError('required')"  class="form-text text-danger"><i class="bi bi-exclamation-circle-fill"></i> This Field Is Required</small>
-      <small *ngIf="getAddress.hasError('minlength')" class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> Length must be than 8 charecters.</small>
+      <small *ngIf="getAddress.hasError('minlength')" class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> Length must be than 7 charecters.</small>
     </div>
   
     <button class="button-submit" (click)="userHandler()">Sign Up</button>
