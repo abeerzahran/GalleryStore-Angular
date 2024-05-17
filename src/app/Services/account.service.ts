@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ILogin } from '../Models/ILogin';
 import { IRegister } from '../Models/IRegister';
@@ -17,6 +17,14 @@ export class AccountService {
 
   register(user:any){
     return this.httpClient.post<IRegister>(`${this.apiUrl}/register`,user);
+  }
+
+  getLoginedUser()
+  {
+    const headers =new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.httpClient.get(`${this.apiUrl}/Account/getLoggedinUser`,{headers});
   }
 
 }

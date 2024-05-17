@@ -7,7 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-wish-list',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './wish-list.component.html',
   styleUrl: './wish-list.component.css'
 })
@@ -27,5 +27,13 @@ export class WishListComponent implements OnInit {
     }
   )
   }
+  Delete (id:number) {
+    this.favouriteService.deleteProduct(id).subscribe({
+      next: ()=>{
+        console.log("deleted");
+      }
+    })
+  }
+
 
 }

@@ -1,3 +1,4 @@
+import { AccountService } from './account.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -11,7 +12,7 @@ export class FavouriteService {
 
   // products:IFavourite[]=[]
   apiURL:string="http://localhost:5087/api/Favourites";
-  constructor(public httpClient:HttpClient) { }
+  constructor(public httpClient:HttpClient ,public accountService: AccountService) { }
 
   getAllFavourites(){
 
@@ -44,6 +45,28 @@ export class FavouriteService {
   //   // return this.Products;
   //   return this.httpClient.put(`${this.apiURL}/${id}`,Product);
   //  }
+   userId:string =""
+  deleteProduct(productId:number){
+
+    this.accountService.getLoginedUser().subscribe({
+      next:(value)=> {
+        this.userId=String(value)
+      },
+    })
+
+    const data = {
+      userId: this.userId,
+      productId: productId
+  };
+
+    return this.httpClient.delete( `${this.apiURL}`, {
+      body: data,
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+      })
+  })
+   }
+
 
 
 }
