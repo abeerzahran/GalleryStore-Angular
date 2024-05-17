@@ -12,14 +12,14 @@
           @switch (product.quantity) {
             @case (0) {
               <p class="text-danger mt-4">No products Available</p>
-             <button class="btn btn-danger d-block m-auto mt-2 disabled" >Reserved</button>
+             <button class="btn btn-danger d-block m-auto mt-2 disabled"  >out of stock</button>
             }
             @case (1) {
               <p class="text-warning mt-4">Only One product Available</p>
-             <button class="btn btn-warning d-block m-auto mt-2 " >Reserve</button>
+             <button class="btn btn-warning d-block m-auto mt-2 " (click)="addToCart(product)">Add to cart</button>
             }
             @default {
-             <button class="btn btn-success d-block m-auto mt-5 mb-3 " >Reserve</button>
+             <button class="btn btn-success d-block m-auto mt-5 mb-3 " (click)="addToCart(product)">Add to cart</button>
             }
           }
 

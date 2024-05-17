@@ -70,7 +70,7 @@ export class AddProductComponent {
       let existproduct: any;
       this.productserv.getProductByID(this.productID).subscribe({
         next: (data) => {
-          console.log(data);
+
           this.product = data;
           // this.product=this.product[0]
           this.getName.setValue(this.product.name);
@@ -96,7 +96,7 @@ export class AddProductComponent {
 
       this.productserv.getAllProducts().subscribe({
         next: (data) => {
-          console.log(data);
+
           this.productID = data.length + 1;
         }
       });

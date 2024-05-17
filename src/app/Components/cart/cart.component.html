@@ -4,32 +4,38 @@
     <div class="card cart col-6 col-md-12">
       <label class="title">Your cart</label>
       <div class="products">
-        @for (product of products ; track $index) {
-      <div class=" product row d-flex flex-row mb-3">
+        @for (item of orderProductslist ; track $index) {
+      <div #item.product.id [id]="item.product.id" class=" product row d-flex flex-row mb-3">
+
         <div class="col-3">
-          <img [src]="product.img" alt="" srcset="" >
+          <img [src]="item.product.img">
         </div>
 
         <div class="col-4">
-          <span>{{product.name}}</span>
-          <p>{{product.description}}</p>
+          <span>{{item.product.name}}</span>
+          <p>{{item.product.description}}</p>
 
         </div>
         <div class="quantity col-3">
-          <button>
-            <svg fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+          <button  (click)="increase(item)">
+            <i class="bi bi-plus-lg"></i>
+            <!-- <svg fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#47484b" d="M20 12L4 12"></path>
-            </svg>
+            </svg> -->
           </button>
-          <label>2</label>
-          <button>
-            <svg fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+          <label>{{item.orderProduct.quantity}}</label>
+          <button (click)="decrease(item)">
+            <i class="bi bi-dash-lg"></i>
+            <!-- <svg fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#47484b" d="M12 4V20M20 12H4"></path>
-            </svg>
+            </svg> -->
           </button>
         </div>
-        <div class="col-2">
-          <label class="price small">${{product.price}}</label>
+        <div class="col-1">
+          <label class="price small">${{item.orderProduct.subTotal}}</label>
+        </div>
+        <div class="col-1 d-flex flex-column justify-content-around text-danger">
+          <a class="" (click)="delete(item)"><i class="bi bi-trash"></i></a>
         </div>
       </div>
     }
