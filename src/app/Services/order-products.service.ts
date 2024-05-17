@@ -10,6 +10,9 @@ export class OrderProductsService {
 
   apiUrl:string="http://localhost:5087/api/OrderProducts"
   constructor(public httpClient: HttpClient) { }
+
+
+
   updateOrderProduct(orderProduct:any){
     return this.httpClient.put(this.apiUrl,orderProduct);
   }
@@ -25,7 +28,12 @@ export class OrderProductsService {
     // console.log(req);
     return this.httpClient.request(req);
   }
+
+
   addOrderProduct( orderProduct:any){
-    return this.httpClient.post(this.apiUrl,orderProduct);
+    const headers= new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem("token")}`,
+    });
+    return this.httpClient.post(this.apiUrl,orderProduct,{headers});
   }
 }

@@ -1,0 +1,11 @@
+.row
+{
+  max-width: 100%;
+}
+.table img{
+  width: 55pt;
+  height: 55pt;
+}
+i{
+  cursor: pointer;
+}

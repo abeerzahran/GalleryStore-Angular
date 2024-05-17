@@ -142,7 +142,7 @@ export class CartComponent implements OnInit {
     this.orderProductsService.deleteOrderProduct(item.orderProduct).subscribe({
       next:(value)=>{
         console.log(item.orderProduct)
-        this.orderProductslist.filter(p=> p.orderProduct.productId!= item.orderProduct.productId);
+        this.orderProductslist=this.orderProductslist.filter(p=> p.orderProduct!==item.orderProduct);
         console.log(this.orderProductslist)
         // console.log(value)
       },
