@@ -12,14 +12,17 @@ export class FavouriteService {
 
   // products:IFavourite[]=[]
   apiURL:string="http://localhost:5087/api/Favourites";
+  userId:any ={}
+   data:any={}
+   headers =new HttpHeaders({
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  });
   constructor(public httpClient:HttpClient ,public accountService: AccountService) { }
 
   getAllFavourites(){
 
-    const headers =new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    });
-    return this.httpClient.get(`${this.apiURL}/getByUserId`,{headers});
+
+    return this.httpClient.get(`${this.apiURL}/getByUserId`,{headers:this.headers});
    }
 
   //  getProductByID(id:number):Observable<IFavourite>{
@@ -32,12 +35,14 @@ export class FavouriteService {
   //   return this.httpClient.delete(`${this.apiURL}/${id}`);
   //  }
 
-  //  addProduct(Product:any){
-  //   // Product.id=this.Products.length+1
-  //   // this.Products.push(Product);
-  //   // return this.Products;
-  //   return this.httpClient.post(this.apiURL,Product);
-  //  }
+   addProduct(productId:any){
+
+        this.data = {
+          productId: Number(productId)
+        };
+
+    return this.httpClient.post(this.apiURL,this.data,{headers:this.headers});
+   }
 
   //  editProduct(id:number , Product:any){
   //   // this.Products[id-1]=Product;
@@ -45,25 +50,30 @@ export class FavouriteService {
   //   // return this.Products;
   //   return this.httpClient.put(`${this.apiURL}/${id}`,Product);
   //  }
-   userId:string =""
-  deleteProduct(productId:number){
 
-    this.accountService.getLoginedUser().subscribe({
-      next:(value)=> {
-        this.userId=String(value)
-      },
-    })
+  deleteProduct (productId:number){
 
-    const data = {
-      userId: this.userId,
-      productId: productId
-  };
+    // this.accountService.getLoginedUser().subscribe({
+    //   next:(value)=> {
+    //     console.log(value)
+    //     this.userId=value
+    //     this.data = {
+    //       userId: this.userId.userId,
+    //       productId: Number(productId)
+    //     };
+
+    //     console.log(this.data)
+    //   },
+    // })
+
+    const headers =new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
 
     return this.httpClient.delete( `${this.apiURL}`, {
-      body: data,
-      headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-      })
+      body: {productId:productId},
+      headers:headers
+
   })
    }
 

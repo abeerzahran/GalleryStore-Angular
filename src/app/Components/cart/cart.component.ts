@@ -5,11 +5,12 @@ import { CartService } from './../../Services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../Models/IProduct';
 import { IOrderProducts } from '../../Models/IOrderProducts';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [],
+  imports: [RouterLink,RouterLinkActive],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
@@ -38,6 +39,7 @@ export class CartComponent implements OnInit {
           this.cartService.createOrder().subscribe({
             next:(value)=> {
               console.log(value)
+              localStorage["cartProductsNum"]=0;
               this.cart=value;
             },
             error:(err)=> {
@@ -55,6 +57,7 @@ export class CartComponent implements OnInit {
         this.Orderproducts=cart.orderProducts;
 
         this.Orderproducts.forEach((element:IOrderProducts) => {
+
           this.productServ.getProductByID(element.productId).subscribe({
             next:(value)=> {
               this.orderProductslist.push({orderProduct:element,product:value});
@@ -141,9 +144,26 @@ export class CartComponent implements OnInit {
   {
     this.orderProductsService.deleteOrderProduct(item.orderProduct).subscribe({
       next:(value)=>{
-        console.log(item.orderProduct)
+        console.log(value)
+
+        this.cart.totalPrice-=item.orderProduct.subTotal;
+        this.cart.quantity--;
+        localStorage.setItem("cartNum",`${this.cart.quantity}`)
+        this.totalOfProducts= this.cart.totalPrice;
+        this.orderTotal=this.totalOfProducts+this.shipping;
         this.orderProductslist=this.orderProductslist.filter(p=> p.orderProduct!==item.orderProduct);
-        console.log(this.orderProductslist)
+
+          this.cartService.updateCart(this.cart.id,this.cart).subscribe({
+            next:(value)=> {
+              console.log(this.cart.id);
+            },
+            error:(err)=> {
+              console.log(err)
+            },
+          })
+
+
+        // console.log(this.orderProductslist)
         // console.log(value)
       },
       error:(err)=> {

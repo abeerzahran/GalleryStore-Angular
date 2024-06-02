@@ -1,0 +1,25 @@
+<div class="product-details row">
+  <div class="col-md-6 d-flex flex-row justify-content-center ">
+      <img class="prodImg  w-75 h-75 " [src]="product.img"  alt="...">
+  </div>
+  <div class="col-md-6 d-flex flex-column align-items-center align-items-md-start ">
+      <h1 class="name">{{product.name}}</h1>
+      <h4 class="price"
+      style="color: #3c547e;">${{product.price}}</h4>
+      <p class="description text-center text-md-start">{{product.description}}</p>
+
+      <p class="material fw-bolder">Rate:
+        <span class="star fw-light" [class.filled]="">{{product.rate}} <span class="text-warning fs-4">&#9733;</span> </span>
+      </p>
+
+
+      <p class="desc_website text-center text-md-start">Our website is designed to make your shopping experience as smooth and enjoyable as possible. You can browse by category and filter your search results to find exactly what you’re looking for. We offer free shipping on orders over a certain amount and easy returns if you’re not completely satisfied with your purchase.</p>
+
+      <div class="row">
+          <div class="col-12">
+              <button class="addToCard p-2 h-100 text-white border-0"  style="background-color: #299954;">ADD TO CART</button>
+          </div>
+      </div>
+
+  </div>
+</div>

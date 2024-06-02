@@ -9,10 +9,10 @@
 
   <div class="btn-group d-flex flex-row justify-content-around mb-5" role="group" aria-label="Basic radio toggle button group">
     <input type="radio" class="btn-check" (input)="chooseCategory($event)" [value]="0" name="btnradio" [id]="'btnradio'+0" autocomplete="off" checked>
-    <label class="btn btn-outline-success mx-2" [for]="'btnradio'+0">All</label>
+    <label class="btn btn-outline-success mx-2 rounded-5" [for]="'btnradio'+0">All</label>
     @for(category of categories; track $index) {
     <input type="radio" class="btn-check" (input)="chooseCategory($event)" [value]="category.id" name="btnradio" [id]="'btnradio'+category.id" autocomplete="off" >
-    <label class="btn btn-outline-success mx-2" [for]="'btnradio'+category.id">{{category.name}}</label>
+    <label class="btn btn-outline-success mx-2 rounded-5" [for]="'btnradio'+category.id">{{category.name}}</label>
 
     <!-- <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
     <label class="btn btn-outline-primary me-5" for="btnradio2">Radio 2</label>
@@ -25,7 +25,7 @@
 
   <div class="row d-flex flex-row">
     @for (product of products; track $index) {
-    <app-product-card class="col-3 col-md-4"  [product]="product" ></app-product-card>
+      <app-product-card class="col-3 col-md-4"  [product]="product" ></app-product-card>
     }
   </div>
 </div>

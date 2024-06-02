@@ -1,3 +1,4 @@
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { RegistirationComponent } from './Components/registiration/registiration.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { Routes } from '@angular/router';
@@ -18,5 +19,7 @@ export const routes: Routes = [
   {path:"cart",component:CartComponent},
   {path:"products/:id/edit",component:AddProductComponent},
   {path:"registiration",component:RegistirationComponent},
-  {path:"wish",component:WishListComponent}
+  {path:"wish",component:WishListComponent},
+  {path:"product/:id",component:ProductDetailsComponent}
+
 ];

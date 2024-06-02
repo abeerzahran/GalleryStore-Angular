@@ -43,6 +43,7 @@ get getRememberMe(){
       next:(data)=> {
         this.token=data.token;
         localStorage.setItem("token",this.token);
+        localStorage.setItem("cartNum","0");
       },
       error(err) {
         console.log(err);

@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { EventEmitter } from 'stream';
 
@@ -9,9 +9,13 @@ import { EventEmitter } from 'stream';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
 
   user:string =""
+  cartNum:string|null=""
 
+  ngOnInit(): void {
+    this.cartNum=localStorage.getItem("cartNum");
+  }
 
 }

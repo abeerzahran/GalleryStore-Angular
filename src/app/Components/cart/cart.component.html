@@ -8,7 +8,9 @@
       <div #item.product.id [id]="item.product.id" class=" product row d-flex flex-row mb-3">
 
         <div class="col-3">
-          <img [src]="item.product.img">
+          <a [routerLink]="['/product',item.product.id]">
+            <img [src]="item.product.img">
+          </a>
         </div>
 
         <div class="col-4">

@@ -28,10 +28,15 @@
     </div>
     <span>
       <ul class="navbar-nav list-group-horizontal  mt-2">
-        <li class="nav-item me-3" [routerLink]="['/cart']" [routerLinkActive]="'text-danger'" [routerLinkActiveOptions]="{exact:true}">
-          <a><i class="bi bi-cart3 fs-5 "></i></a>
+        <li class="nav-item cart me-3" [routerLink]="['/cart']" [routerLinkActive]="'text-danger'" [routerLinkActiveOptions]="{exact:true}">
+          <a>
+            <i class="bi bi-cart3 fs-5 "></i>
+            <span class="position-absolute top-0 start-100  translate-middle badge rounded-pill text-bg-secondary bg-opacity-75" style="font-size: 10px;aspect-ratio: 1/1; ">
+              {{cartNum}}
+            </span>
+          </a>
         </li>
-        <li class="nav-item mt-1 me-3 " [routerLink]="['/favourite']" [routerLinkActive]="'text-danger'" [routerLinkActiveOptions]="{exact:true}">
+        <li class="nav-item mt-1 me-3 " [routerLink]="['/wish']" [routerLinkActive]="'text-danger'" [routerLinkActiveOptions]="{exact:true}">
           <a><i class="bi bi-heart fs-5 "></i></a>
         </li>
         <li class="nav-item  me-3"[routerLink]="['/login']" [routerLinkActive]="'text-danger'" [routerLinkActiveOptions]="{exact:true}">

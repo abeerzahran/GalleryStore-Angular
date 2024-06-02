@@ -20,13 +20,13 @@ export class OrderProductsService {
   deleteOrderProduct(orderProduct:any):Observable<any>
   {
     // console.log(orderProduct);
-    const req = new HttpRequest('DELETE', this.apiUrl, orderProduct, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    });
+    const headers= new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+    return this.httpClient.delete(this.apiUrl,{headers:headers,body:orderProduct});
+
     // console.log(req);
-    return this.httpClient.request(req);
+
   }
 
 
@@ -35,5 +35,13 @@ export class OrderProductsService {
       'Authorization': `Bearer ${localStorage.getItem("token")}`,
     });
     return this.httpClient.post(this.apiUrl,orderProduct,{headers});
+  }
+
+  getProductInCart(productId:number)
+  {
+    const headers= new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem("token")}`,
+    });
+    return this.httpClient.get(`${this.apiUrl}/getproduct/${productId}`,{headers});
   }
 }

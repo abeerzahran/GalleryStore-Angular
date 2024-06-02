@@ -1,27 +1,42 @@
 
 <!-- <div > -->
     <div class="w-100 bg-white">
-      <div class="hotel-product text-center w-100">
-        <a href="#" class="d-block mb-0 thumbnail">
-          <img [src]="product.img" alt="Image" class="img-fluid h-25">
+      <div class="hotel-product text-center position-relative w-100">
+        <a href="#" [routerLink]="['/product',product.id]" class="d-block mb-0 thumbnail">
+          <img [src]="product.img" alt="Image" class="img-fluid ">
         </a>
+        <label class="container position-absolute top-0 end-0 mt-3">
+          <input   type="checkbox" (click)="addToFavourite(product.id)">
+          <div class="checkmark">
+            <svg viewBox="0 0 256 256">
+            <rect fill="none" height="256" width="256"></rect>
+            <path d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z" stroke-width="20px" stroke="#dc3545" fill="none"></path></svg>
+          </div>
+        </label>
         <div class="hotel-product-body py-4">
           <h5 class="heading mb-0 "><a class="text-decoration-none text-black fw-medium" href="#">{{product.name}}</a></h5>
           <strong class="price text-secondary fw-medium">${{product.price}} / per night</strong>
+          <div class="star-rating">
+            <!-- <span *ngFor="let star of stars" class="star" [class.filled]="star">&#9733;</span> -->
 
-          @switch (product.quantity) {
-            @case (0) {
-              <p class="text-danger mt-4">No products Available</p>
-             <button class="btn btn-danger d-block m-auto mt-2 disabled"  >out of stock</button>
+            @switch (product.quantity) {
+              @case (0) {
+                <p class="text-danger mt-4">No products Available</p>
+                <span class="star" [class.filled]="">{{product.rate}} <span class="text-warning fs-4">&#9733;</span> </span>
+                <button class="addToCart btn btn-danger d-block m-auto ms-2  disabled">out of stock</button>
+              }
+              @case (1) {
+                <p class="text-warning mt-4">Only One product Available</p>
+                <span class="star" [class.filled]="">{{product.rate}} <span class="text-warning fs-4">&#9733;</span> </span>
+                <button class="addToCart btn btn-warning d-block m-auto ms-2 " [disabled]="addedToCart" (click)="addToCart(product)">Add to cart</button>
+              }
+              @default {
+                <span class="star" [class.filled]="">{{product.rate}} <span class="text-warning fs-4">&#9733;</span> </span>
+                <button class="addToCart btn btn-success d-block m-auto ms-2" [disabled]="addedToCart" (click)="addToCart(product)">Add to cart</button>
+              }
             }
-            @case (1) {
-              <p class="text-warning mt-4">Only One product Available</p>
-             <button class="btn btn-warning d-block m-auto mt-2 " (click)="addToCart(product)">Add to cart</button>
-            }
-            @default {
-             <button class="btn btn-success d-block m-auto mt-5 mb-3 " (click)="addToCart(product)">Add to cart</button>
-            }
-          }
+          </div>
+
 
         </div>
       </div>
