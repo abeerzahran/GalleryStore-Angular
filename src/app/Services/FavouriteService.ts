@@ -78,5 +78,14 @@ export class FavouriteService {
    }
 
 
+  getProductById(id:number){
+    return this.httpClient.get(this.apiURL+'/getById/'+id,{
+      headers:{
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+  }
+
+
 
 }

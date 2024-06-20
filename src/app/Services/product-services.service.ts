@@ -40,5 +40,7 @@ export class ProductServicesService {
     return this.httpClient.put(`${this.apiURL}/${id}`,Product);
    }
 
-
+   getProductPage(page:number, category:string){
+    return this.httpClient.get<IProduct[]>(this.apiURL+"/productPage/"+page+"/"+category);
+   }
 }

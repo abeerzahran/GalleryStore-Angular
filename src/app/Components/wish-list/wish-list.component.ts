@@ -42,6 +42,7 @@ export class WishListComponent implements OnInit {
     this.favouriteService.deleteProduct(id).subscribe({
       next: ()=>{
         console.log("deleted");
+        this.products= this.products.filter((p:any) => p.id != id);
       }
     })
   }

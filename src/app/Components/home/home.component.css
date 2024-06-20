@@ -4,3 +4,7 @@
 /* .types img{
   max-width: 400px;
 } */
+
+.review{
+  background-image: url("../../../assets/images/reviewBg.jpg");
+}
