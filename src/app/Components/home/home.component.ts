@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SliderComponent } from '../slider/slider.component';
 
 @Component({
@@ -8,6 +8,9 @@ import { SliderComponent } from '../slider/slider.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  ngOnInit(): void {
+  }
+
 
 }

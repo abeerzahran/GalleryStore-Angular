@@ -44,12 +44,17 @@ get getRememberMe(){
         this.token=data.token;
         localStorage.setItem("token",this.token);
         localStorage.setItem("cartNum","0");
+        location.reload()
+
       },
       error(err) {
         console.log(err);
       },
     })
-    this.route.navigate(['/']);
+    this.route.navigate(['/'])
+
+
+
  }
 }
 

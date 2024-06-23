@@ -1,11 +1,10 @@
-import { EventEmitter } from 'stream';
 import { AccountService } from './../../../Services/account.service';
 import { FavouriteService } from './../../../Services/FavouriteService';
 import { CartService } from './../../../Services/cart.service';
 import { OrderProductsService } from './../../../Services/order-products.service';
 import { CategoryService } from './../../../Services/category.service';
 import { ProductServicesService } from './../../../Services/product-services.service';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { IProduct } from '../../../Models/IProduct';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
@@ -24,7 +23,8 @@ export class ProductCardComponent implements OnInit {
   cartNum:number=0
   @Input() product:any={}
   stars:number[]=[]
-  // @Output() cartAdd:EventEmitter=new EventEmitter();
+
+  @Output() cardEditCartEvent=new EventEmitter();
 
  constructor(
   public ProductServ:ProductServicesService,
@@ -102,7 +102,7 @@ export class ProductCardComponent implements OnInit {
 
                 this.cartService.updateCart(this.cart.id,this.cart).subscribe({
                   next:(value)=> {
-                    console.log(value)
+
                   },
                   error(err) {
                     console.log(err)
@@ -115,7 +115,7 @@ export class ProductCardComponent implements OnInit {
               },
             })
 
-            // this.cartAdd.emit;
+            this.cardEditCartEvent.emit("1");
           },
           error:(err)=> {
             console.log(err)

@@ -25,7 +25,7 @@
 
   <div class="row d-flex flex-row justify-content-evenly">
     @for (product of products; track $index) {
-      <app-product-card class="card col-lg-3 col-md-3 col-sm-5 p-2 me-1  mb-3 "  [product]="product" ></app-product-card>
+      <app-product-card class="card col-lg-3 col-md-3 col-sm-5 p-2 me-1  mb-3 "  [product]="product" (cardEditCartEvent)="productEditCartFun($event)" ></app-product-card>
     }
   </div>
   <div class="mt-5" >
@@ -39,12 +39,6 @@
           <button class="page-link active" (click)="choosePage(page)" >{{page}}</button>
         </li>
       }
-        <!-- <li class="page-item active" aria-current="page">
-          <button class="page-link"  (click)="choosePage(2)">2</button>
-        </li>
-        <li class="page-item">
-          <button class="page-link" (click)="choosePage(3)">3</button>
-        </li> -->
         <li class="page-item">
           <button class="page-link" (click)="nextPage()" >Next</button>
         </li>

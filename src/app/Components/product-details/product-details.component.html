@@ -17,9 +17,27 @@
 
       <div class="row">
           <div class="col-12">
-              <button class="addToCard p-2 h-100 text-white border-0"  style="background-color: #299954;">ADD TO CART</button>
+              <button class="addToCard p-2 h-100 text-white border-0"  style="background-color: #299954;" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addToCart(product)">ADD TO CART</button>
           </div>
       </div>
 
+  </div>
+</div>
+
+<!-- Alert -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Alert</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{addedToCart}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

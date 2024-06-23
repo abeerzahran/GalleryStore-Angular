@@ -5,12 +5,13 @@ import { IProduct } from '../../Models/IProduct';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { error } from 'node:console';
 import { OrderProductsService } from '../../Services/order-products.service';
+import { CommonModule} from '@angular/common';
 
 
 @Component({
   selector: 'app-wish-list',
   standalone: true,
-  imports: [RouterLink  ],
+  imports: [RouterLink,CommonModule  ],
   templateUrl: './wish-list.component.html',
   styleUrl: './wish-list.component.css'
 })
@@ -37,6 +38,20 @@ export class WishListComponent implements OnInit {
       }
     }
   )
+
+
+  this.orderProductsService.getProductInCart(this.orderProduct.productId).subscribe({
+    next:(value)=> {
+      console.log(value);
+
+      if(value==null)
+        {
+          this.addedToCart=false
+        }
+        else
+          this.addedToCart=true
+    },
+  })
   }
   Delete (id:number) {
     this.favouriteService.deleteProduct(id).subscribe({
@@ -59,30 +74,42 @@ export class WishListComponent implements OnInit {
           productId: product.id,
           quantity: 1
         }
-        // console.log(this.orderProduct)
-        this.orderProductsService.addOrderProduct(this.orderProduct).subscribe({
+
+        this.orderProductsService.getProductInCart(product.id).subscribe({
           next:(value)=> {
-            // console.log(value)
-            this.cart.totalPrice+=product.price;
-            this.cart.quantity++;
-            this.addedToCart=true;
-            localStorage.setItem("cartNum",`${this.cart.quantity}`)
+            if(value==null)
+              {
+                this.addedToCart="Added Successfully";
+                this.orderProductsService.addOrderProduct(this.orderProduct).subscribe({
+                  next:(value)=> {
+                    // console.log(value)
+                    this.cart.totalPrice+=product.price;
+                    this.cart.quantity++;
+                    localStorage.setItem("cartNum",`${this.cart.quantity}`)
 
 
-            this.cartService.updateCart(this.cart.id,this.cart).subscribe({
-              next:(value)=> {
-                console.log(value)
-              },
-              error(err) {
-                console.log(err)
-              },
-            })
-          },
-          error:(err)=> {
-            console.log(err)
+                    this.cartService.updateCart(this.cart.id,this.cart).subscribe({
+                      next:(value)=> {
+                        console.log(value)
+                      },
+                      error(err) {
+                        console.log(err)
+                      },
+                    })
+                  },
+                  error:(err)=> {
+                    console.log(err)
 
+                  },
+                })
+              }
+              else{
+                this.addedToCart="The product is already added"
+              }
           },
         })
+        // console.log(this.orderProduct)
+
 
       },
       error:(err)=> {

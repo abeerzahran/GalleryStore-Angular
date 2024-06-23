@@ -27,4 +27,8 @@ export class AccountService {
     return this.httpClient.get(`${this.apiUrl}/Account/getLoggedinUser`,{headers});
   }
 
+  logout(){
+    return this.httpClient.get<any>(`${this.apiUrl}/logout`);
+  }
+
 }

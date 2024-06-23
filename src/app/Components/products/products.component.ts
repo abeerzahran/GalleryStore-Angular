@@ -1,6 +1,6 @@
 import { ProductServicesService } from './../../Services/product-services.service';
 import { CategoryService } from './../../Services/category.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ICategory } from '../../Models/ICategory';
 import { CommonModule } from '@angular/common';
@@ -21,10 +21,9 @@ export class ProductsComponent implements OnInit {
   pagesNumber:number=0
   pagesArray:number[]=[]
   products:IProduct[]=[]
-  constructor(public categoryService: CategoryService, public ProductServ: ProductServicesService) {
+  @Output() productEditCartEvent=new EventEmitter();
 
-
-  }
+  constructor(public categoryService: CategoryService, public ProductServ: ProductServicesService) {}
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe({
       next:(value)=> {
@@ -139,7 +138,10 @@ export class ProductsComponent implements OnInit {
     console.log(this.page);
   }
 
-
+  productEditCartFun(num:Event){
+    this.productEditCartEvent.emit(num)
+    console.log(num);
+  }
 
 
 
